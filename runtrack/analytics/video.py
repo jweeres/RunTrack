@@ -5,7 +5,7 @@ from pathlib import Path
 import cv2
 import requests
 
-from pytrack.analytics import plugins
+from runtrack.analytics import plugins
 
 PREV_PAN_ID = None
 

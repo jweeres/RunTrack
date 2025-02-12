@@ -82,6 +82,21 @@ def get_candidates(G, points, interp_dist=1, closest=True, radius=10):
     ball = BallTree(nodes, metric='haversine')
 
     idxs, dists = ball.query_radius(np.deg2rad(points), radius / distance.EARTH_RADIUS_M, return_distance=True)
+    not_found = [points[i] for i, idx_array in enumerate(idxs) if idx_array.size == 0]
+    nf_idxs, nf_dists = ball.query_radius(np.deg2rad(not_found), radius*100 / distance.EARTH_RADIUS_M, return_distance=True)
+    idxs[not_found] = nf_idxs
+    dists[not_found] = nf_dists
+    not_found = [points[i] for i, idx_array in enumerate(idxs) if idx_array.size == 0]
+    nf_idxs, nf_dists = ball.query(np.deg2rad(not_found), k=5,return_distance=True)
+    
+    for i, dist_array in enumerate(nf_dists):
+        close_idxs = dist_array < radius*100+dist_array[0]
+        nf_dists[i] = dist_array[close_idxs]
+        nf_idxs[i] = nf_idxs[i][close_idxs]
+    
+    idxs[not_found] = nf_idxs
+    dists[not_found] = nf_dists
+    
     dists = dists * distance.EARTH_RADIUS_M  # radians to meters
 
     if closest:

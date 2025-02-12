@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from shapely.geometry import LineString
 
-from pytrack.graph import utils
-from pytrack.matching import mpmatching_utils
+from runtrack.graph import utils
+from runtrack.matching import mpmatching_utils
 
 
 class Map(folium.Map):

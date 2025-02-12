@@ -3,7 +3,7 @@ import numpy as np
 from pyproj import Geod
 from shapely.geometry import Point, LineString
 
-from pytrack.graph import utils
+from runtrack.graph import utils
 
 geod = Geod(ellps="WGS84")
 EARTH_RADIUS_M = 6_371_009  # distance in meters
