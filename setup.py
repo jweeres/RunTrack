@@ -15,15 +15,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='PyTrack-lib',
-    version='2.0.8',
+    name='RunTrack-lib',
+    version='0.0.1',
     packages=setuptools.find_packages(),
     # namespace_packages=['pytrack'],
-    url='https://github.com/cosbidev/PyTrack',
+    url='https://github.com/jweeres/RunTrack',
     license='BSD-3-Clause-Clear',
-    author='Matteo Tortora',
-    author_email='m.tortora@unicampus.it',
-    description='a Map-Matching-based Python Toolbox for Vehicle Trajectory Reconstruction',
+    author='Jessica Weeres',
+    # author_email='m.tortora@unicampus.it',
+    description='a Map-Matching-based Python Toolbox for Running Routes',
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
